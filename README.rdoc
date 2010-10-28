@@ -1,0 +1,3 @@
+= Yozm OAuth
+
+Gem for Yozm OAuth client API.
