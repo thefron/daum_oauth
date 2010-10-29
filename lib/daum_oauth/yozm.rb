@@ -3,6 +3,12 @@
 module DaumOAuth
 	class Client
 
+		#check if authorized to yozm
+		def yozm_authorized?
+			user_info = yozm_show
+			!user_info.nil? and user_info['status'] == 200
+		end
+
 		#gets user info
 		#if authorized with oauth, the authorized user's info will be returned. 
 		#Otherwise, you can specify nick_name or url_name.

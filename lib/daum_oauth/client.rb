@@ -7,7 +7,7 @@ module DaumOAuth
 			@consumer_secret = options[:consumer_secret]
 			@token = options[:token]
 			@secret = options[:secret]
-			@callback_url = options[:callback_url]
+			#@callback_url = options[:callback_url]
 		end
 
 		def authorize(token, secret, options = {})
