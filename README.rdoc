@@ -1,3 +1,3 @@
-= Yozm OAuth
+= Daum OAuth
 
-Gem for Yozm OAuth client API.
+Daum OAuth client API library for ruby.

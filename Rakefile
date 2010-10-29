@@ -2,9 +2,9 @@ require 'rubygems'
 require 'rake'
 require 'echoe'
 
-Echoe.new('yozm_oauth', '0.1.0') do |p|
-	p.description = 'Yozm OAuth API client library for ruby'
-	p.url = 'http://github.com/thefron/yozm_oauth'
+Echoe.new('daum_oauth', '0.1.0') do |p|
+	p.description = 'Daum OAuth API client library for ruby'
+	p.url = 'http://github.com/thefron/daum_oauth'
 	p.author = 'Hoseong Hwang'
 	p.email = 'thefron@wafflestudio.com'
 	p.ignore_pattern  = ["tmp/*", "script/*"]
