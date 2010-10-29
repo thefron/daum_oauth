@@ -1,4 +1,5 @@
 require 'daum_oauth/yozm'
+require 'daum_oauth/cafe'
 
 module DaumOAuth
 	class Client
