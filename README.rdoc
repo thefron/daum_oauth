@@ -1,3 +1,60 @@
 = Daum OAuth
 
-Daum OAuth client API library for ruby.
+== About
+
+This is Daum OAuth client API library for ruby.
+
+Motivated by moomerman's twitter_oauth gem
+(http://github.com/moomerman/twitter_oauth)
+
+OAuth specs: http://oauth.net/core/1.0/
+
+OAuth Introduction @ Daum DNA: http://apis.daum.net/oauth/
+
+== Installing
+
+	sudo gem install daum_oauth
+
+Source code is available at http://github.com/thefron/daum_oauth
+
+== Usage
+
+	client = DaumOAuth::Client.new(
+		:consumer_key => 'YOUR_APP_CONSUMER_KEY',
+		:consumer_secret => 'YOUR_APP_CONSUMER_SECRET'
+	)
+	request_token = client.request_token(:oauth_callback => 'callback_url')
+	#:oauth_callback must be specified
+
+	request_token.authorize_url
+	=>  https://apis.daum.net/oauth/authorize?oauth_token=TOKEN
+
+In your application, make users redirect to the authorize_url(daum). Before redirection, store the request token and secret(usually in the session).Then users will authorize the application and be redirected to callback_url you've specified before.
+
+Then in callback procedure,
+
+	access_token = client.authorize(
+		request_token.token,
+		request_token.secret,
+		:oauth_verifier => params[:oauth_verifier]
+	)
+
+	#For now, there's no method for checking authorization's validity.
+	#At least, you can try this if your application makes use of yozm.
+	client.yozm_authorized?
+	=> true
+
+	client.yozm_add 'message here' # sends a yozm message
+
+Now if you can keep access_token(usually in the database) for this user, you won't need re-authorize them next time. Just initialize a client instance with stored access_token when needed.
+
+	access_token = @user.access_token #assuming @user
+
+	client = DaumOAuth::Client.new(
+		:consumer_key => 'YOUR_APP_CONSUMER_KEY',
+		:consumer_secret => 'YOUR_APP_CONSUMER_SECRET',
+		:token => access_token.token,
+		:secret=> access_token.secret
+	)
+
+You are ready to access protected resource.
