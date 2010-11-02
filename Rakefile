@@ -2,7 +2,7 @@ require 'rubygems'
 require 'rake'
 require 'echoe'
 
-Echoe.new('daum_oauth', '0.1.0') do |p|
+Echoe.new('daum_oauth', '0.1.1') do |p|
 	p.description = 'Daum OAuth API client library for ruby'
 	p.url = 'http://github.com/thefron/daum_oauth'
 	p.author = 'Hoseong Hwang'

@@ -1,5 +1,7 @@
 require 'daum_oauth/yozm'
 require 'daum_oauth/cafe'
+require 'daum_oauth/blog'
+require 'uri'
 
 module DaumOAuth
 	class Client
