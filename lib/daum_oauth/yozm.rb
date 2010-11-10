@@ -24,8 +24,8 @@ module DaumOAuth
 
 		#send a message to yozm 
 		def yozm_add(message, options={})
-			get("/yozm/v1_0/message/add.json?#{options.merge(:message => URI.encode(message)).collect{|k, v| "#{k}=#{v}"}.join('&')}")
-			#post("/yozm/v1_0/message/add.json", {:message => message})
+			#get("/yozm/v1_0/message/add.json?#{options.merge(:message => URI.encode(message)).collect{|k, v| "#{k}=#{v}"}.join('&')}")
+			post("/yozm/v1_0/message/add.json", options.merge(:message => message))
 		end
 	end
 end
